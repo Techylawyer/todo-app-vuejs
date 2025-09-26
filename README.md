@@ -1,64 +1,77 @@
-# todo-app-vuejs
+# Todo App
 
-This template should help get you started developing with Vue 3 in Vite.
+This todo app built with Vue provides a simple and intuitive way of tracking your tasks.
 
-## Recommended IDE Setup
+## Features 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+* Create new tasks
+* Update existing tasks
+* Delete tasks
+* Mark tasks as completed
+* Filter tasks by all, active and completed
+* Search tasks
 
-## Type Support for `.vue` Imports in TS
+![Todo App](/src/images/image-1.png)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+* Paginated tasks (10 tasks per page)
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+* View individual tasks to get more details ![Todo details](src/images/image-2.png)
 
-## Project Setup
+## Technology Stack
 
-```sh
+The following tools were used in this project:
+
+* Vue
+* ShadCN/UI for Vue
+* DummyJSON API
+* Tailwind CSS
+* Tanstack (Vue) Query
+* Axios
+* Localforage
+* Vue Icons
+
+## Installation and Setup
+
+To get started with this project, ensure you have Node.js installed (v20 or higher).
+
+1. Clone this repository:
+
+```bash
+git clone https://github.com/Techylawyer/todo-app-vuejs.git
+
+cd todo-app-vuejs
+```
+2. Install the necessary packages and dependencies
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+3. Start the development server
 
-```sh
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## API Integration
+ 
+ * The DummyJSON Todo API (https://dummyjson.com/todos) for generating a default list of todos
+ * Tanstack (Vue) Query  for data fetching
+ * Localforage for data caching and persistence
 
-```sh
-npm run build
-```
+ ## Styling
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+* ShadCN/UI for component styling and color consistency
+* Tailwind CSS for CSS utility classes
 
-```sh
-npm run test:unit
-```
+ ## Available Scripts
+ * ```npm run dev``` - start the development server
+ * ``` npm run build``` - build for production
+ * ```npm run preview``` preview production build
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+ ## Future Improvements
 
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+ * Light and dark theme toggle
+ * Search all todos functionality
+ * Implement offline capability
