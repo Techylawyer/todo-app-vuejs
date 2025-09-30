@@ -227,7 +227,7 @@ function handleSearch(value: string) {
   >
     <TodoForm
       :newTodo="newTodo"
-      :setNewTodo="(val) => (newTodo.value = val)"
+      :setNewTodo="(val) => (newTodo = val)"
       :handleSubmit="handleSubmit"
     />
 

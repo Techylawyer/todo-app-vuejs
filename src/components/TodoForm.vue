@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input'
 
 defineProps<{
   newTodo: string
-  setNewTodo: (value: string) => void
+  setNewTodo: (val: string) => void
   handleSubmit: () => void
 }>()
 </script>
