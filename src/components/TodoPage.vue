@@ -36,6 +36,7 @@ const getTodos: QueryFunction<TodosResponse> = async ({ queryKey }) => {
   if (cached) return cached
 
   const res = await axios.get(`${API}?limit=${todosPerPage}&skip=${page * todosPerPage}`)
+
   const data: TodosResponse = { todos: res.data.todos, total: res.data.total }
 
   await localforage.setItem(`todos-page-${page}`, data)

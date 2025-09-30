@@ -1,34 +1,32 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router"
-import { Button } from "@/components/ui/button"
+import { useRoute, useRouter } from 'vue-router'
+import { Button } from '@/components/ui/button'
+import { computed } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
 
-const current = (route.query.filter as string) || "all"
+const current = computed(() => (route.query.filter as string) || 'all')
 
 function setFilter(filter: string) {
   router.push({
     query: {
       ...route.query,
       filter,
+      page: 1,
     },
   })
 }
 </script>
 
 <template>
-  <section
-    class="filter-section flex gap-2 justify-center"
-    role="region"
-    aria-label="Filter Todos"
-  >
+  <section class="filter-section flex gap-2 justify-center" role="region" aria-label="Filter Todos">
     <Button
       variant="default"
       size="default"
       class="btn btn-active btn-primary cursor-pointer"
-      :disabled="current === 'all'"
       @click="setFilter('all')"
+      :disabled="current === 'all'"
     >
       All
     </Button>
@@ -37,8 +35,8 @@ function setFilter(filter: string) {
       variant="default"
       size="default"
       class="btn btn-active btn-primary cursor-pointer"
-      :disabled="current === 'active'"
       @click="setFilter('active')"
+      :disabled="current === 'active'"
     >
       Active
     </Button>
@@ -47,8 +45,8 @@ function setFilter(filter: string) {
       variant="default"
       size="default"
       class="btn btn-active btn-primary cursor-pointer"
-      :disabled="current === 'completed'"
       @click="setFilter('completed')"
+      :disabled="current === 'completed'"
     >
       Completed
     </Button>
