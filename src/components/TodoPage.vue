@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   useQuery,
@@ -214,10 +214,22 @@ function goToPage(page: number) {
   router.push({ query: { ...route.query, page } })
 }
 
-function handleSearch(value: string) {
-  searchKeyword.value = value
-  router.push({ query: { ...route.query, search: value, page: 1 } })
-}
+watch(searchKeyword, (newValue) => {
+  if (newValue !== route.query.search) {
+    router.push({
+      query: { ...route.query, search: newValue, page: 1 },
+    })
+  }
+})
+
+watch(
+  () => route.query.search,
+  (newSearch) => {
+   if (newSearch !== searchKeyword.value) {
+      searchKeyword.value = (newSearch as string) || ""
+    }
+  }
+)
 </script>
 
 <template>
@@ -234,7 +246,7 @@ function handleSearch(value: string) {
 
     <section class="filter-search flex gap-2 justify-center w-80 md:w-100">
       <FilterButtons />
-      <SearchInput :searchKeyword="searchKeyword" :onSearchChange="handleSearch" />
+      <SearchInput v-model="searchKeyword" />
     </section>
 
     <section role="region" aria-label="Todo List">
